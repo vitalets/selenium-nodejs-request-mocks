@@ -17,6 +17,11 @@ before(async () => {
   network = await getNetwork(driver);
 });
 
+after(async () => {
+  await network.close();
+  await driver.quit();
+});
+
 it("Render users (server-side-mock)", async () => {
   await mockServerSideRequest(
     network,
@@ -33,9 +38,4 @@ it("Render users (server-side-mock)", async () => {
 
   assert.equal(users.length, 2);
   assert.equal(await users[0].getText(), "User 1");
-});
-
-after(async () => {
-  await network.close();
-  await driver.quit();
 });

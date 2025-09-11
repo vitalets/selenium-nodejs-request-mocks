@@ -8,6 +8,10 @@ before(async () => {
   driver = await new Builder().forBrowser("chrome").build();
 });
 
+after(async () => {
+  await driver.quit();
+});
+
 it("Render users (no-mocks)", async () => {
   await driver.get("http://localhost:3000/client-side-api-call");
 
@@ -15,8 +19,4 @@ it("Render users (no-mocks)", async () => {
 
   assert.equal(users.length, 10);
   assert.equal(await users[0].getText(), "Leanne Graham");
-});
-
-after(async () => {
-  await driver.quit();
 });
