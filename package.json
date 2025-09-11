@@ -6,12 +6,14 @@
     "start": "next start",
     "test": "node --test test/**/*.spec.js",
     "test:nm": "node --test test/no-mocks.spec.js",
-    "test:csm": "node --test test/client-side-mock.spec.js"
+    "test:csr": "node --test test/client-side-mock.spec.js",
+    "test:ssr": "node --test test/server-side-mock.spec.js"
   },
   "devDependencies": {
     "@types/react": "19.1.12",
     "@types/selenium-webdriver": "^4.1.28",
     "prettier": "^3.6.2",
+    "request-mocking-protocol": "^0.1.3",
     "selenium-webdriver": "^4.35.0",
     "typescript": "^5.9.2"
   },
