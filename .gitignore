@@ -1,0 +1,16 @@
+/.vscode
+
+# dependencies
+/node_modules
+
+# build output
+/.next
+/out
+
+# production
+/.vercel
+
+# misc
+.env.local
+
+/todo.txt

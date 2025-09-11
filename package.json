@@ -1,0 +1,23 @@
+{
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "test": "node --test test/**/*.spec.js",
+    "test:nm": "node --test test/no-mocks.spec.js",
+    "test:csm": "node --test test/client-side-mock.spec.js"
+  },
+  "devDependencies": {
+    "@types/react": "19.1.12",
+    "@types/selenium-webdriver": "^4.1.28",
+    "prettier": "^3.6.2",
+    "selenium-webdriver": "^4.35.0",
+    "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "next": "^15.5.2",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  }
+}
