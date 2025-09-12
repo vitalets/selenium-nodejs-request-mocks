@@ -1,1 +1,1 @@
-# Mocking network requests with Selenium WebDriver Bidi
+# Mocking Network Requests with Selenium WebDriver BiDi (Node.js)
