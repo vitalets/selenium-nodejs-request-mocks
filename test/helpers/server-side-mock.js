@@ -5,6 +5,14 @@ import { ContinueRequestParameters } from "selenium-webdriver/bidi/continueReque
 import { InterceptPhase } from "selenium-webdriver/bidi/interceptPhase.js";
 import { MockClient } from "request-mocking-protocol";
 
+/**
+ * Mocks a server-side request by intercepting network traffic and modifying the request/response.
+ *
+ * @param {object} network - The network object used to manage intercepts and requests.
+ * @param {string} pageUrl - The navigation URL of the page.
+ * @param {string} requestUrl - The URL of the request to mock.
+ * @param {object} jsonBody - The JSON body to use as the mocked response.
+ */
 export async function mockServerSideRequest(network, pageUrl, requestUrl, jsonBody) {
   const mockClient = new MockClient();
   await mockClient.GET(requestUrl, { body: jsonBody });
