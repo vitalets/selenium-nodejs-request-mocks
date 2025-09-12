@@ -1,4 +1,5 @@
 {
+  "name": "selenium-nodejs-request-mocks",
   "type": "module",
   "scripts": {
     "dev": "next dev",
