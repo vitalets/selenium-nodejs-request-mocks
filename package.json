@@ -10,17 +10,20 @@
     "test:csr": "node --test test/client-side-mock.spec.js",
     "test:ssr": "node --test test/server-side-mock.spec.js"
   },
+  "dependencies": {
+    "next": "16.2.4",
+    "react": "19.2.5",
+    "react-dom": "19.2.5"
+  },
   "devDependencies": {
-    "@types/react": "19.1.12",
+    "@types/react": "19.2.14",
     "@types/selenium-webdriver": "^4.1.28",
     "prettier": "^3.6.2",
     "request-mocking-protocol": "^0.1.3",
     "selenium-webdriver": "^4.35.0",
     "typescript": "^5.9.2"
   },
-  "dependencies": {
-    "next": "^15.5.2",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+  "overrides": {
+    "@types/react": "19.2.14"
   }
 }
