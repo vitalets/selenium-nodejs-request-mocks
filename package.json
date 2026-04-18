@@ -1,6 +1,7 @@
 {
   "name": "selenium-nodejs-request-mocks",
   "type": "module",
+  "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
