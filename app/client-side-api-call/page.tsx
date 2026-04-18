@@ -1,6 +1,6 @@
-"use client";
-import React, { useEffect } from "react";
-import Link from "next/link";
+'use client';
+import React, { useEffect } from 'react';
+import Link from 'next/link';
 
 type User = {
   id: number;
@@ -12,7 +12,7 @@ export default function Page() {
 
   useEffect(() => {
     async function fetchUsers() {
-      const response = await fetch("https://jsonplaceholder.typicode.com/users");
+      const response = await fetch('https://jsonplaceholder.typicode.com/users');
       const data: User[] = await response.json();
       setUsers(data);
     }

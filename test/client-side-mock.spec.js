@@ -1,16 +1,16 @@
-import assert from "assert";
-import { before, after, it } from "node:test";
-import { By, Builder, until } from "selenium-webdriver";
-import firefox from "selenium-webdriver/firefox.js";
-import { Network as getNetwork } from "selenium-webdriver/bidi/network.js";
-import { mockClientSideRequest } from "./helpers/client-side-mock.js";
+import assert from 'assert';
+import { before, after, it } from 'node:test';
+import { By, Builder, until } from 'selenium-webdriver';
+import firefox from 'selenium-webdriver/firefox.js';
+import { Network as getNetwork } from 'selenium-webdriver/bidi/network.js';
+import { mockClientSideRequest } from './helpers/client-side-mock.js';
 
 let driver;
 let network;
 
 before(async () => {
   driver = await new Builder()
-    .forBrowser("firefox")
+    .forBrowser('firefox')
     .setFirefoxOptions(new firefox.Options().enableBidi())
     .build();
 
@@ -22,15 +22,15 @@ after(async () => {
   await driver.quit();
 });
 
-it("Render users (client-side-mock)", async () => {
-  await mockClientSideRequest(network, "https://jsonplaceholder.typicode.com/users", [
-    { id: 1, name: "User 1" },
-    { id: 2, name: "User 2" },
+it('Render users (client-side-mock)', async () => {
+  await mockClientSideRequest(network, 'https://jsonplaceholder.typicode.com/users', [
+    { id: 1, name: 'User 1' },
+    { id: 2, name: 'User 2' },
   ]);
 
-  await driver.get("http://localhost:3000/client-side-api-call");
-  const users = await driver.wait(until.elementsLocated(By.css("li")), 3000);
+  await driver.get('http://localhost:3000/client-side-api-call');
+  const users = await driver.wait(until.elementsLocated(By.css('li')), 3000);
 
   assert.equal(users.length, 2);
-  assert.equal(await users[0].getText(), "User 1");
+  assert.equal(await users[0].getText(), 'User 1');
 });

@@ -1,9 +1,9 @@
-import { BytesValue } from "selenium-webdriver/bidi/networkTypes.js";
-import { Header } from "./fixed-header.js";
-import { AddInterceptParameters } from "selenium-webdriver/bidi/addInterceptParameters.js";
-import { ContinueRequestParameters } from "selenium-webdriver/bidi/continueRequestParameters.js";
-import { InterceptPhase } from "selenium-webdriver/bidi/interceptPhase.js";
-import { MockClient } from "request-mocking-protocol";
+import { BytesValue } from 'selenium-webdriver/bidi/networkTypes.js';
+import { Header } from './fixed-header.js';
+import { AddInterceptParameters } from 'selenium-webdriver/bidi/addInterceptParameters.js';
+import { ContinueRequestParameters } from 'selenium-webdriver/bidi/continueRequestParameters.js';
+import { InterceptPhase } from 'selenium-webdriver/bidi/interceptPhase.js';
+import { MockClient } from 'request-mocking-protocol';
 
 /**
  * Mocks a server-side request by intercepting network traffic and modifying the request/response.
@@ -26,7 +26,7 @@ export async function mockServerSideRequest(network, pageUrl, requestUrl, jsonBo
     const requestId = request.request;
     if (request.url === pageUrl) {
       const mockHeaders = Object.entries(mockClient.headers).map(
-        ([name, value]) => new Header(name, new BytesValue("string", value)),
+        ([name, value]) => new Header(name, new BytesValue('string', value)),
       );
       const params = new ContinueRequestParameters(requestId).headers([
         ...request.headers,
