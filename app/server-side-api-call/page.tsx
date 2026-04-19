@@ -1,13 +1,16 @@
 import Link from 'next/link';
 
-type User = {
-  id: number;
-  name: string;
-};
+type User = { id: number; name: string };
 
-export default async function Page() {
+async function fetchUsers() {
   const response = await fetch('https://jsonplaceholder.typicode.com/users');
   const users: User[] = await response.json();
+  return users;
+}
+
+export default async function Page() {
+  // Fetch users on server
+  const users = await fetchUsers();
 
   return (
     <>

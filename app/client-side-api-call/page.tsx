@@ -2,21 +2,20 @@
 import React, { useEffect } from 'react';
 import Link from 'next/link';
 
-type User = {
-  id: number;
-  name: string;
-};
+type User = { id: number; name: string };
+
+async function fetchUsers() {
+  const response = await fetch('https://jsonplaceholder.typicode.com/users');
+  const users: User[] = await response.json();
+  return users;
+}
 
 export default function Page() {
   const [users, setUsers] = React.useState<User[]>();
 
+  // Fetch users on client
   useEffect(() => {
-    async function fetchUsers() {
-      const response = await fetch('https://jsonplaceholder.typicode.com/users');
-      const data: User[] = await response.json();
-      setUsers(data);
-    }
-    fetchUsers();
+    fetchUsers().then((users) => setUsers(users));
   }, []);
 
   return (

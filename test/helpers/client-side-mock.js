@@ -1,5 +1,4 @@
-import { BytesValue } from 'selenium-webdriver/bidi/networkTypes.js';
-import { Header } from './fixed-header.js';
+import { Header, BytesValue } from 'selenium-webdriver/bidi/networkTypes.js';
 import { AddInterceptParameters } from 'selenium-webdriver/bidi/addInterceptParameters.js';
 import { ProvideResponseParameters } from 'selenium-webdriver/bidi/provideResponseParameters.js';
 import { InterceptPhase } from 'selenium-webdriver/bidi/interceptPhase.js';
