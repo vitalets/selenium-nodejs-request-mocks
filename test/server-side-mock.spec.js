@@ -25,7 +25,7 @@ after(async () => {
 it('Render users (server-side-mock)', async () => {
   await mockServerSideRequest(
     network,
-    'http://localhost:3000/server-side-api-call',
+    'http://localhost:3000/ssr',
     'https://jsonplaceholder.typicode.com/users',
     [
       { id: 1, name: 'User 1' },
@@ -33,7 +33,7 @@ it('Render users (server-side-mock)', async () => {
     ],
   );
 
-  await driver.get('http://localhost:3000/server-side-api-call');
+  await driver.get('http://localhost:3000/ssr');
   const users = await driver.wait(until.elementsLocated(By.css('li')), 3000);
 
   assert.equal(users.length, 2);

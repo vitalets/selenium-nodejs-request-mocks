@@ -13,7 +13,7 @@ after(async () => {
 });
 
 it('Render users (no-mocks)', async () => {
-  await driver.get('http://localhost:3000/client-side-api-call');
+  await driver.get('http://localhost:3000');
 
   const users = await driver.wait(until.elementsLocated(By.css('li')), 3000);
 

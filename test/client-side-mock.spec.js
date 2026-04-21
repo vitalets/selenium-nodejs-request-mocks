@@ -28,7 +28,7 @@ it('Render users (client-side-mock)', async () => {
     { id: 2, name: 'User 2' },
   ]);
 
-  await driver.get('http://localhost:3000/client-side-api-call');
+  await driver.get('http://localhost:3000');
   const users = await driver.wait(until.elementsLocated(By.css('li')), 3000);
 
   assert.equal(users.length, 2);

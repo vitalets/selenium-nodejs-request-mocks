@@ -1,17 +1,20 @@
-import Link from 'next/link';
+'use client';
+import { useState, useEffect } from 'react';
+import { fetchUsers, User } from '../api/fetch-users';
+import UsersList from '../components/users-list';
 
 export default function Page() {
+  const [users, setUsers] = useState<User[]>();
+
+  // Fetch users on client
+  useEffect(() => {
+    fetchUsers().then((users) => setUsers(users));
+  }, []);
+
   return (
     <>
-      <h1>Hello, SeleniumConf 2026!</h1>
-      <ul>
-        <li>
-          <Link href="/client-side-api-call">Page with client-side API call</Link>
-        </li>
-        <li>
-          <Link href="/server-side-api-call">Page with server-side API call</Link>
-        </li>
-      </ul>
+      <h1>Users (client-side API call)</h1>
+      <UsersList users={users} />
     </>
   );
 }
