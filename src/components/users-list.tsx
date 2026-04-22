@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { User } from '../api/fetch-users';
+import { User } from '../api/users';
 
 export default function UsersList({ users }: { users?: User[] }) {
   return (

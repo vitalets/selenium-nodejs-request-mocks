@@ -1,6 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { fetchUsers, User } from '../api/fetch-users';
+import { fetchUsers, User } from '../api/users';
 import UsersList from '../components/users-list';
 
 export default function Page() {

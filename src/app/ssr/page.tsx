@@ -1,4 +1,4 @@
-import { fetchUsers } from '../../api/fetch-users';
+import { fetchUsers } from '../../api/users';
 import UsersList from '../../components/users-list';
 
 export default async function Page() {
