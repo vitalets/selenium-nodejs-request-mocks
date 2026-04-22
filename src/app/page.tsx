@@ -1,20 +1,20 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { fetchUsers, User } from '../api/users';
+import { fetchUsers, FetchUsersResponse } from '../api/users';
 import UsersList from '../components/users-list';
 
 export default function Page() {
-  const [users, setUsers] = useState<User[]>();
+  const [data, setData] = useState<FetchUsersResponse>();
 
   // Fetch users on client
   useEffect(() => {
-    fetchUsers().then((users) => setUsers(users));
+    fetchUsers().then((data) => setData(data));
   }, []);
 
   return (
     <>
       <h1>Users (client-side API call)</h1>
-      <UsersList users={users} />
+      <UsersList data={data} />
     </>
   );
 }

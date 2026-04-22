@@ -1,21 +1,25 @@
-import Link from 'next/link';
-import { User } from '../api/users';
+import { FetchUsersResponse } from '../api/users';
 
-export default function UsersList({ users }: { users?: User[] }) {
+export default function UsersList({ data }: { data?: FetchUsersResponse }) {
+  if (!data) {
+    return <i>Loading...</i>;
+  }
+
+  if ('error' in data) {
+    return <i>Error: {data.error}</i>;
+  }
+
   return (
     <>
-      {users ? (
+      {data.users.length ? (
         <ul id="users-list">
-          {users.map((user) => (
+          {data.users.map((user) => (
             <li key={user.id}>{user.name}</li>
           ))}
         </ul>
       ) : (
-        <i>Loading...</i>
+        <i>No users found.</i>
       )}
-      <p>
-        <Link href="/">Back to home</Link>
-      </p>
     </>
   );
 }

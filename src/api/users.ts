@@ -3,9 +3,17 @@ export type User = {
   name: string;
 };
 
-export async function fetchUsers() {
+export type FetchUsersResponse = { users: User[] } | { error: string };
+
+export async function fetchUsers(): Promise<FetchUsersResponse> {
   const response = await fetch('https://jsonplaceholder.typicode.com/users');
   // const response = await fetch('https://jsonplaceholder.typicode.com/users?_sort=name');
+
+  if (!response.ok) {
+    const error = `${response.status} ${response.statusText}`;
+    return { error };
+  }
+
   const users: User[] = await response.json();
-  return users;
+  return { users };
 }

@@ -3,12 +3,12 @@ import UsersList from '../../components/users-list';
 
 export default async function Page() {
   // Fetch users on server
-  const users = await fetchUsers();
+  const data = await fetchUsers();
 
   return (
     <>
       <h1>Users (server-side API call)</h1>
-      <UsersList users={users} />
+      <UsersList data={data} />
     </>
   );
 }
