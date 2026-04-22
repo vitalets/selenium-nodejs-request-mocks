@@ -1,15 +1,12 @@
 import assert from 'assert';
 import { before, after, it } from 'node:test';
-import { By, Builder, until } from 'selenium-webdriver';
-import chrome from 'selenium-webdriver/chrome.js';
+import { By, until } from 'selenium-webdriver';
+import { openBrowser } from './helpers/browser.js';
 
 let driver;
 
 before(async () => {
-  driver = await new Builder()
-    .forBrowser('chrome')
-    .setChromeOptions(new chrome.Options().enableBidi())
-    .build();
+  driver = await openBrowser();
 });
 
 after(async () => {

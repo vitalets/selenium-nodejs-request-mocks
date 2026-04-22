@@ -6,10 +6,10 @@
     "dev": "NODE_OPTIONS='--require ./src/patch-fetch.js' next dev",
     "build": "next build",
     "start": "next start",
-    "test": "node --test-concurrency 1 --test test/**/*.spec.js",
+    "test": "node --test test/client-side-mock.spec.js",
     "test:nm": "node --test test/no-mocks.spec.js",
-    "test:csr": "node --test test/client-side-mock.spec.js",
-    "test:ssr": "node --test test/server-side-mock.spec.js"
+    "test:ssr": "node --test test/server-side-mock.spec.js",
+    "test:all": "node --test-concurrency 1 --test test/**/*.spec.js"
   },
   "dependencies": {
     "next": "16.2.4",
