@@ -36,3 +36,7 @@ export async function mockServerSideRequest(network, pageUrl, requestUrl, jsonBo
     await network.continueRequest(params);
   });
 }
+
+// todo: handle MaxListenersExceededWarning
+// Each network.continueRequest() call adds a new WS listener
+// See: https://github.com/SeleniumHQ/selenium/blob/trunk/javascript/selenium-webdriver/bidi/index.js#L117
