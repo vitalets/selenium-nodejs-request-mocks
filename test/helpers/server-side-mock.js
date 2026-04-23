@@ -10,11 +10,14 @@ import { MockClient } from 'request-mocking-protocol';
  * @param {object} network - The network object used to manage intercepts and requests.
  * @param {string} pageUrl - The navigation URL of the page.
  * @param {string} requestUrl - The URL of the request to mock.
- * @param {object} jsonBody - The JSON body to use as the mocked response.
+ * @param {object|number} jsonBody - The JSON body to use as the mocked response or a status code for error simulation.
  */
 export async function mockServerSideRequest(network, pageUrl, requestUrl, jsonBody) {
   const mockClient = new MockClient();
-  await mockClient.GET(requestUrl, { body: jsonBody });
+  const status = typeof jsonBody === 'number' ? jsonBody : 200;
+  const body = typeof jsonBody === 'number' ? '' : jsonBody;
+
+  await mockClient.GET(requestUrl, { status, body });
 
   await network.addIntercept(
     new AddInterceptParameters(InterceptPhase.BEFORE_REQUEST_SENT).urlStringPattern(pageUrl),
