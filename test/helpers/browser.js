@@ -11,7 +11,7 @@ export async function openBrowser() {
   return (
     new Builder()
       .forBrowser('firefox')
-      .setFirefoxOptions(new firefox.Options().enableBidi())
+      .setFirefoxOptions(new firefox.Options().addArguments('-headless').enableBidi())
       // .setChromeOptions(new chrome.Options().enableBidi())
       .build()
   );
