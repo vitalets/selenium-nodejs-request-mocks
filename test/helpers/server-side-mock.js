@@ -23,15 +23,13 @@ export async function mockServerSideRequest(network, pageUrl, requestUrl, jsonBo
   await network.beforeRequestSent(async (event) => {
     const request = event.request;
     const requestId = request.request;
+    const params = new ContinueRequestParameters(requestId);
     if (request.url === pageUrl) {
       const mockHeaders = Object.entries(mockClient.headers).map(
         ([name, value]) => new Header(name, new BytesValue('string', value)),
       );
-      const params = new ContinueRequestParameters(requestId).headers([
-        ...request.headers,
-        ...mockHeaders,
-      ]);
-      await network.continueRequest(params);
+      params.headers([...request.headers, ...mockHeaders]);
     }
+    await network.continueRequest(params);
   });
 }
