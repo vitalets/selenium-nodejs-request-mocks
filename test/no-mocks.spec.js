@@ -1,5 +1,5 @@
 import assert from 'assert';
-import { before, after, it } from 'node:test';
+import { before, after, it, describe } from 'node:test';
 import { By, until } from 'selenium-webdriver';
 import { openBrowser } from './helpers/browser.js';
 
@@ -13,11 +13,21 @@ after(async () => {
   await driver.quit();
 });
 
-it('Render users (no-mocks)', async () => {
-  await driver.get('http://localhost:3000');
+describe('Users list (no mocks)', () => {
+  it('non-empty list', async () => {
+    await driver.get('http://localhost:3000');
 
-  const users = await driver.wait(until.elementsLocated(By.css('li')), 3000);
+    const users = await driver.wait(until.elementsLocated(By.css('li')), 3000);
 
-  assert.equal(users.length, 10);
-  assert.equal(await users[0].getText(), 'Leanne Graham');
+    assert.equal(users.length, 10);
+    assert.equal(await users[0].getText(), 'Leanne Graham');
+  });
+
+  it.skip('empty list', async () => {
+    // no way to emulate
+  });
+
+  it.skip('error', async () => {
+    // no way to emulate
+  });
 });

@@ -1,5 +1,5 @@
 import assert from 'assert';
-import { before, after, it } from 'node:test';
+import { before, beforeEach, afterEach, after, it, describe } from 'node:test';
 import { By, until } from 'selenium-webdriver';
 import { openBrowser, getNetwork } from './helpers/browser.js';
 import { mockClientSideRequest } from './helpers/client-side-mock.js';
@@ -7,25 +7,45 @@ import { mockClientSideRequest } from './helpers/client-side-mock.js';
 let driver;
 let network;
 
-before(async () => {
+beforeEach(async () => {
   driver = await openBrowser();
   network = await getNetwork(driver);
 });
 
-after(async () => {
+afterEach(async () => {
   await network.close();
   await driver.quit();
 });
 
-it('Render users (client-side-mock)', async () => {
-  await mockClientSideRequest(network, 'https://jsonplaceholder.typicode.com/users', [
-    { id: 1, name: 'User 1' },
-    { id: 2, name: 'User 2' },
-  ]);
+describe('Users list (client-side mocks)', () => {
+  it('non-empty list', async () => {
+    await mockClientSideRequest(network, 'https://jsonplaceholder.typicode.com/users', [
+      { id: 1, name: 'User 1' },
+      { id: 2, name: 'User 2' },
+    ]);
 
-  await driver.get('http://localhost:3000');
-  const users = await driver.wait(until.elementsLocated(By.css('li')), 3000);
+    await driver.get('http://localhost:3000');
+    const users = await driver.wait(until.elementsLocated(By.css('li')), 3000);
 
-  assert.equal(users.length, 2);
-  assert.equal(await users[0].getText(), 'User 1');
+    assert.equal(users.length, 2);
+    assert.equal(await users[0].getText(), 'User 1');
+  });
+
+  it('empty list', async () => {
+    await mockClientSideRequest(network, 'https://jsonplaceholder.typicode.com/users', []);
+
+    await driver.get('http://localhost:3000');
+    const content = await driver.wait(until.elementLocated(By.css('.empty')), 3000);
+
+    assert.equal(await content.getText(), 'No users found.');
+  });
+
+  it('error', async () => {
+    await mockClientSideRequest(network, 'https://jsonplaceholder.typicode.com/users', 500);
+
+    await driver.get('http://localhost:3000');
+    const content = await driver.wait(until.elementLocated(By.css('.error')), 3000);
+
+    assert.equal(await content.getText(), 'Error: 500');
+  });
 });

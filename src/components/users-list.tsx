@@ -6,7 +6,7 @@ export default function UsersList({ data }: { data?: FetchUsersResponse }) {
   }
 
   if ('error' in data) {
-    return <i>Error: {data.error}</i>;
+    return <div className="error">Error: {data.error}</div>;
   }
 
   return (
@@ -18,7 +18,7 @@ export default function UsersList({ data }: { data?: FetchUsersResponse }) {
           ))}
         </ul>
       ) : (
-        <i>No users found.</i>
+        <div className="empty">No users found.</div>
       )}
     </>
   );

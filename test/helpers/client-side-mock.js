@@ -19,10 +19,17 @@ export async function mockClientSideRequest(network, requestUrl, jsonBody) {
     const request = event.request;
     const requestId = request.request;
     if (request.url.startsWith(requestUrl)) {
-      const body = new BytesValue('string', JSON.stringify(jsonBody));
       const headers = [new Header('Access-Control-Allow-Origin', new BytesValue('string', '*'))];
+      const status = typeof jsonBody === 'number' ? jsonBody : 200;
+      const body =
+        typeof jsonBody === 'object'
+          ? new BytesValue('string', JSON.stringify(jsonBody))
+          : new BytesValue('string', '');
+
+      // const response = new ProvideResponseParameters(requestId).headers(headers);
+      // const body = new BytesValue('string', JSON.stringify(jsonBody));
       const response = new ProvideResponseParameters(requestId)
-        .statusCode(200)
+        .statusCode(status)
         .headers(headers)
         .body(body);
       await network.provideResponse(response);
