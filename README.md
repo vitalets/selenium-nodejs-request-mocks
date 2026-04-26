@@ -29,11 +29,17 @@
 5. Run tests with client-side mocks:
 
    ```
-   npm run test:csr
+   npm run test
    ```
 
 6. Run tests with server-side mocks:
 
    ```
    npm run test:ssr
+   ```
+
+7. Run all tests:
+
+   ```
+   npm run test:all
    ```
