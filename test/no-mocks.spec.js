@@ -17,7 +17,7 @@ describe('Users list (no mocks)', () => {
   it('non-empty list', async () => {
     await driver.get('http://localhost:3000');
 
-    const users = await driver.wait(until.elementsLocated(By.css('li')), 3000);
+    const users = await driver.wait(until.elementsLocated(By.css('.users-list li')), 3000);
     assert.equal(users.length, 6);
     assert.match(await users[0].getText(), /Leanne Graham/);
   });
