@@ -1,12 +1,15 @@
 import assert from 'assert';
 import { beforeEach, afterEach, it, describe } from 'node:test';
-import { By, until } from 'selenium-webdriver';
-import { openBrowser } from './helpers/browser.js';
+import { Builder, By, until } from 'selenium-webdriver';
+import firefox from 'selenium-webdriver/firefox.js';
 
 let driver;
 
 beforeEach(async () => {
-  driver = await openBrowser();
+  driver = await new Builder()
+    .forBrowser('firefox')
+    .setFirefoxOptions(new firefox.Options().enableBidi())
+    .build();
 });
 
 afterEach(async () => {

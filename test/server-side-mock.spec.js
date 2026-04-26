@@ -1,14 +1,18 @@
 import assert from 'assert';
 import { beforeEach, afterEach, describe, it } from 'node:test';
-import { By, until } from 'selenium-webdriver';
-import { openBrowser, getNetwork } from './helpers/browser.js';
+import { Builder, By, until } from 'selenium-webdriver';
+import firefox from 'selenium-webdriver/firefox.js';
+import { Network as getNetwork } from 'selenium-webdriver/bidi/network.js';
 import { mockServerSideRequest } from './helpers/server-side-mock.js';
 
 let driver;
 let network;
 
 beforeEach(async () => {
-  driver = await openBrowser();
+  driver = await new Builder()
+    .forBrowser('firefox')
+    .setFirefoxOptions(new firefox.Options().enableBidi())
+    .build();
   network = await getNetwork(driver);
 });
 
