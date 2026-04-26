@@ -1,4 +1,5 @@
 import assert from 'assert';
+import { setTimeout as sleep } from 'timers/promises';
 import { beforeEach, afterEach, it } from 'node:test';
 import { Builder, By, until } from 'selenium-webdriver';
 import firefox from 'selenium-webdriver/firefox.js';
@@ -17,6 +18,7 @@ beforeEach(async () => {
 });
 
 afterEach(async () => {
+  await sleep(2000);
   await network.close();
   await driver.quit();
 });
