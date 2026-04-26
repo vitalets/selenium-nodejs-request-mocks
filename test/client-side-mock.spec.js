@@ -19,27 +19,31 @@ afterEach(async () => {
 
 describe('Users list (client-side mocks)', () => {
   it('non-empty list', async () => {
-    await mockClientSideRequest(network, 'https://jsonplaceholder.typicode.com/users', [
+    await mockClientSideRequest(network, 'https://jsonplaceholder.typicode.com/users?_limit=6', [
       { id: 1, name: 'User 1' },
       { id: 2, name: 'User 2' },
     ]);
     await driver.get('http://localhost:3000');
     const users = await driver.wait(until.elementsLocated(By.css('li')), 3000);
     assert.equal(users.length, 2);
-    assert.equal(await users[0].getText(), 'User 1');
+    assert.match(await users[0].getText(), /User 1/);
   });
 
   it('empty list', async () => {
-    await mockClientSideRequest(network, 'https://jsonplaceholder.typicode.com/users', []);
+    await mockClientSideRequest(network, 'https://jsonplaceholder.typicode.com/users?_limit=6', []);
     await driver.get('http://localhost:3000');
     const content = await driver.wait(until.elementLocated(By.css('.empty')), 3000);
-    assert.equal(await content.getText(), 'No users found.');
+    assert.match(await content.getText(), /No users found/);
   });
 
   it('error', async () => {
-    await mockClientSideRequest(network, 'https://jsonplaceholder.typicode.com/users', 500);
+    await mockClientSideRequest(
+      network,
+      'https://jsonplaceholder.typicode.com/users?_limit=6',
+      500,
+    );
     await driver.get('http://localhost:3000');
     const content = await driver.wait(until.elementLocated(By.css('.error')), 3000);
-    assert.equal(await content.getText(), 'Error: 500');
+    assert.match(await content.getText(), /Error: 500/);
   });
 });

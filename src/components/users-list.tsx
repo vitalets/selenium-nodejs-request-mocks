@@ -18,7 +18,7 @@ export default function UsersList({ data }: { data?: FetchUsersResponse }) {
             <li key={user.id}>
               <Avatar userId={user.id} />
               <div className="user-details">
-                <span>{user.name}</span>
+                <span className="user-name">{user.name}</span>
                 <small>User #{user.id}</small>
               </div>
             </li>
