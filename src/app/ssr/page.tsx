@@ -5,10 +5,5 @@ export default async function Page() {
   // Fetch users on server
   const data = await fetchUsers();
 
-  return (
-    <>
-      <h1>Users (server-side API call)</h1>
-      <UsersList data={data} />
-    </>
-  );
+  return <UsersList data={data} />;
 }

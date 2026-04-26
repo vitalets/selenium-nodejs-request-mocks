@@ -1,8 +1,9 @@
 import { FetchUsersResponse } from '../api/users';
+import Avatar from './avatar';
 
 export default function UsersList({ data }: { data?: FetchUsersResponse }) {
   if (!data) {
-    return <i>Loading...</i>;
+    return <div className="loading-state">Loading users...</div>;
   }
 
   if ('error' in data) {
@@ -14,7 +15,13 @@ export default function UsersList({ data }: { data?: FetchUsersResponse }) {
       {data.users.length ? (
         <ul id="users-list">
           {data.users.map((user) => (
-            <li key={user.id}>{user.name}</li>
+            <li key={user.id}>
+              <Avatar userId={user.id} />
+              <div className="user-details">
+                <span>{user.name}</span>
+                <small>User #{user.id}</small>
+              </div>
+            </li>
           ))}
         </ul>
       ) : (

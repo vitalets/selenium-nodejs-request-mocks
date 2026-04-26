@@ -11,10 +11,5 @@ export default function Page() {
     fetchUsers().then((data) => setData(data));
   }, []);
 
-  return (
-    <>
-      <h1>Users (client-side API call)</h1>
-      <UsersList data={data} />
-    </>
-  );
+  return <UsersList data={data} />;
 }

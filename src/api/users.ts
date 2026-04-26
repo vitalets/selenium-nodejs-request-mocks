@@ -6,8 +6,8 @@ export type User = {
 export type FetchUsersResponse = { users: User[] } | { error: string };
 
 export async function fetchUsers(): Promise<FetchUsersResponse> {
-  const response = await fetch('https://jsonplaceholder.typicode.com/users');
-  // const response = await fetch('https://jsonplaceholder.typicode.com/users?_sort=name');
+  const response = await fetch('https://jsonplaceholder.typicode.com/users?_limit=6');
+  // const response = await fetch('https://jsonplaceholder.typicode.com/users?_limit=6&_sort=name');
 
   if (!response.ok) {
     const error = `${response.status} ${response.statusText}`;
