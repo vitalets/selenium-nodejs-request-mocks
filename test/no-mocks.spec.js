@@ -1,5 +1,5 @@
 import assert from 'assert';
-import { beforeEach, afterEach, it, describe } from 'node:test';
+import { beforeEach, afterEach, it } from 'node:test';
 import { Builder, By, until } from 'selenium-webdriver';
 import firefox from 'selenium-webdriver/firefox.js';
 
@@ -16,12 +16,10 @@ afterEach(async () => {
   await driver.quit();
 });
 
-describe('Users list (no mocks)', () => {
-  it('non-empty list', async () => {
-    await driver.get('http://localhost:3000');
+it('non-empty list (no mocks)', async () => {
+  await driver.get('http://localhost:3000');
 
-    const users = await driver.wait(until.elementsLocated(By.css('.users-list li')), 3000);
-    assert.equal(users.length, 6);
-    assert.match(await users[0].getText(), /Leanne Graham/);
-  });
+  const users = await driver.wait(until.elementsLocated(By.css('.users-list li')), 3000);
+  assert.equal(users.length, 6);
+  assert.match(await users[0].getText(), /Leanne Graham/);
 });

@@ -6,10 +6,10 @@
     "dev": "NODE_OPTIONS='--require ./src/patch-fetch.js' next dev",
     "build": "next build",
     "start": "next start",
-    "test": "node --test test/client-side-mock.spec.js",
-    "test:nm": "node --test test/no-mocks.spec.js",
-    "test:ssr": "node --disable-warning=MaxListenersExceededWarning --test test/server-side-mock.spec.js",
-    "test:all": "npm run test && npm run test:nm && npm run test:ssr"
+    "test": "node --test test/no-mocks.spec.js",
+    "test:client-mocks": "node --test test/client-mocks.spec.js",
+    "test:server-mocks": "node --disable-warning=MaxListenersExceededWarning --test test/server-mocks.spec.js",
+    "test:all": "npm run test && npm run test:client-mocks && npm run test:server-mocks"
   },
   "dependencies": {
     "next": "16.2.4",
