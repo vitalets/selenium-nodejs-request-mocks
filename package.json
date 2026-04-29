@@ -20,7 +20,7 @@
     "@types/react": "19.2.14",
     "@types/selenium-webdriver": "^4.35.5",
     "prettier": "^3.8.3",
-    "request-mocking-protocol": "^0.2.0",
+    "request-mocking-protocol": "^0.2.1",
     "selenium-webdriver": "^4.43.0",
     "typescript": "^5.9.2"
   },
