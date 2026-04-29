@@ -25,7 +25,7 @@ it('non-empty list (server mocks)', async () => {
   await mockServerSideRequest(
     network,
     'http://localhost:3000/ssr',
-    'https://jsonplaceholder.typicode.com/users*',
+    'https://jsonplaceholder.typicode.com/users?_limit=6',
     [
       { id: 1, name: 'User 1' },
       { id: 2, name: 'User 2' },
@@ -43,7 +43,7 @@ it('empty list (server mocks)', async () => {
   await mockServerSideRequest(
     network,
     'http://localhost:3000/ssr',
-    'https://jsonplaceholder.typicode.com/users*',
+    'https://jsonplaceholder.typicode.com/users?_limit=6',
     [],
   );
 
@@ -57,7 +57,7 @@ it('error (server mocks)', async () => {
   await mockServerSideRequest(
     network,
     'http://localhost:3000/ssr',
-    'https://jsonplaceholder.typicode.com/users*',
+    'https://jsonplaceholder.typicode.com/users?_limit=6',
     500,
   );
 
