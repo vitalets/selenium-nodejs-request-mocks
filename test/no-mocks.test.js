@@ -1,5 +1,6 @@
 import assert from 'assert';
 import { beforeEach, afterEach, it } from 'node:test';
+import { setTimeout } from 'timers/promises';
 import { Builder, By, until } from 'selenium-webdriver';
 import firefox from 'selenium-webdriver/firefox.js';
 
@@ -13,6 +14,7 @@ beforeEach(async () => {
 });
 
 afterEach(async () => {
+  await setTimeout(1000);
   await driver.quit();
 });
 
