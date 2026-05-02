@@ -30,8 +30,8 @@ it('non-empty list (client mocks)', async () => {
   ]);
 
   await driver.get('http://localhost:3000');
-
   const users = await driver.wait(until.elementsLocated(By.css('.users-list li')), 3000);
+
   assert.equal(users.length, 2);
   assert.match(await users[0].getText(), /User 1/);
 });
@@ -40,8 +40,8 @@ it('empty list (client mocks)', async () => {
   await mockClientSideRequest(network, 'https://jsonplaceholder.typicode.com/users?_limit=6', []);
 
   await driver.get('http://localhost:3000');
-
   const content = await driver.wait(until.elementLocated(By.css('.empty')), 3000);
+
   assert.match(await content.getText(), /No users found/);
 });
 
@@ -49,7 +49,7 @@ it('error (client mocks)', async () => {
   await mockClientSideRequest(network, 'https://jsonplaceholder.typicode.com/users?_limit=6', 500);
 
   await driver.get('http://localhost:3000');
-
   const content = await driver.wait(until.elementLocated(By.css('.error')), 3000);
+
   assert.match(await content.getText(), /Error: 500/);
 });
