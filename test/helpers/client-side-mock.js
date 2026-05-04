@@ -11,16 +11,17 @@ import { InterceptPhase } from 'selenium-webdriver/bidi/interceptPhase.js';
  * @param {object|number} jsonBody - The JSON body to use as the mocked response or a status code for error simulation.
  */
 export async function mockClientSideRequest(network, requestUrl, jsonBody) {
-  // setup interception of the API request
+  // 1. setup network interception
   await network.addIntercept(
     new AddInterceptParameters(InterceptPhase.BEFORE_REQUEST_SENT).urlStringPattern(requestUrl),
   );
 
-  // when request occurs, provide mocked response
+  // 2. listen network events from browser
   await network.beforeRequestSent(async (event) => {
     const request = event.request;
     const requestId = request.request;
     if (request.url === requestUrl) {
+      // 3. provide mocked response
       const status = getMockStatus(jsonBody);
       const headers = getMockHeaders();
       const body = getMockBody(jsonBody);
