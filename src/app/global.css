@@ -189,14 +189,14 @@ h1 {
 .users-list span {
   min-width: 0;
   color: var(--ink);
-  font-size: 1.02rem;
+  font-size: 1.1rem;
   font-weight: 800;
   overflow-wrap: anywhere;
 }
 
 .users-list small {
   color: var(--muted);
-  font-size: 0.78rem;
+  font-size: 0.9rem;
   font-weight: 700;
 }
 
@@ -210,6 +210,8 @@ h1 {
   color: #46566f;
   font-weight: 700;
   box-shadow: 0 14px 34px rgba(35, 49, 77, 0.08);
+  font-size: 1.5rem;
+  /* text-align: center; */
 }
 
 .error {

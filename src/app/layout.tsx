@@ -8,7 +8,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en">
       <body>
         <div className="app-shell">
-          <Logo />
+          {/* <Logo /> */}
           <main className="page-frame">
             <section className="hero-panel">
               <div className="hero-title">
