@@ -4,24 +4,19 @@ import { ProvideResponseParameters } from 'selenium-webdriver/bidi/provideRespon
 import { InterceptPhase } from 'selenium-webdriver/bidi/interceptPhase.js';
 
 /**
- * Mocks a client-side request by intercepting network traffic and providing a custom response.
- *
- * @param {object} network - The network object used to manage intercepts and requests.
- * @param {string} requestUrl - The URL of the request to mock.
- * @param {object|number} jsonBody - The JSON body to use as the mocked response or a status code for error simulation.
+ * A helper to mock client-side requests.
  */
 export async function mockClientSideRequest(network, requestUrl, jsonBody) {
-  // 1. setup network interception
   await network.addIntercept(
-    new AddInterceptParameters(InterceptPhase.BEFORE_REQUEST_SENT).urlStringPattern(requestUrl),
+    new AddInterceptParameters(InterceptPhase.BEFORE_REQUEST_SENT).urlStringPattern(
+      requestUrl,
+    ),
   );
 
-  // 2. listen network events from browser
   await network.beforeRequestSent(async (event) => {
     const request = event.request;
     const requestId = request.request;
     if (request.url === requestUrl) {
-      // 3. provide mocked response
       const status = getMockStatus(jsonBody);
       const headers = getMockHeaders();
       const body = getMockBody(jsonBody);

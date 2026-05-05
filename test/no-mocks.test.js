@@ -1,6 +1,5 @@
 import assert from 'assert';
 import { beforeEach, afterEach, it } from 'node:test';
-import { setTimeout } from 'timers/promises';
 import { Builder, By, until } from 'selenium-webdriver';
 import firefox from 'selenium-webdriver/firefox.js';
 
@@ -14,7 +13,7 @@ beforeEach(async () => {
 });
 
 afterEach(async () => {
-  await setTimeout(1000);
+  await driver.sleep(1000);
   await driver.quit();
 });
 
@@ -25,12 +24,4 @@ it('non-empty list (no mocks)', async () => {
 
   assert.equal(users.length, 6);
   assert.match(await users[0].getText(), /Leanne Graham/);
-});
-
-it.skip('empty list (no mocks)', async () => {
-  // no way to test this without mocks
-});
-
-it.skip('error (no mocks)', async () => {
-  // no way to test this without mocks
 });

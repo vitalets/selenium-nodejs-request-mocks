@@ -28,7 +28,7 @@
     "@types/react": "19.2.14"
   },
   "prettier": {
-    "printWidth": 100,
+    "printWidth": 90,
     "tabWidth": 2,
     "semi": true,
     "singleQuote": true

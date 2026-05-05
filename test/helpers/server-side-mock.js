@@ -4,20 +4,15 @@ import { ContinueRequestParameters } from 'selenium-webdriver/bidi/continueReque
 import { InterceptPhase } from 'selenium-webdriver/bidi/interceptPhase.js';
 
 /**
- * Mocks a server-side request by intercepting network traffic and modifying the request/response.
- *
- * @param {object} network - The network object used to manage intercepts and requests.
- * @param {string} pageUrl - The navigation URL of the page.
- * @param {string} requestUrl - The URL of the request to mock.
- * @param {object|number} jsonBody - The JSON body to use as the mocked response or a status code for error simulation.
+ * A helper to mock server-side requests.
  */
 export async function mockServerSideRequest(network, pageUrl, requestUrl, jsonBody) {
-  // setup interception of page navigation request
   await network.addIntercept(
-    new AddInterceptParameters(InterceptPhase.BEFORE_REQUEST_SENT).urlStringPattern(pageUrl),
+    new AddInterceptParameters(InterceptPhase.BEFORE_REQUEST_SENT).urlStringPattern(
+      pageUrl,
+    ),
   );
 
-  // define a custom header with mock info
   const customHeader = buildHeader('x-mock-request', [
     {
       reqSchema: {
@@ -30,7 +25,6 @@ export async function mockServerSideRequest(network, pageUrl, requestUrl, jsonBo
     },
   ]);
 
-  // when page navigation occurs, inject the custom header
   await network.beforeRequestSent(async (event) => {
     const request = event.request;
     const requestId = request.request;

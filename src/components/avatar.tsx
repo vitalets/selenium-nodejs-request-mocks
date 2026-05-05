@@ -25,7 +25,7 @@ const avatars: StaticImageData[] = [
 ];
 
 function getAvatarByUserId(id: number) {
-  const avatarIndex = ((id - 1) % avatars.length + avatars.length) % avatars.length;
+  const avatarIndex = (((id - 1) % avatars.length) + avatars.length) % avatars.length;
   return avatars[avatarIndex];
 }
 
