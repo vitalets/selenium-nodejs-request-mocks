@@ -13,7 +13,7 @@ export default function UsersList({ data }: { data?: FetchUsersResponse }) {
   return (
     <>
       {data.users.length ? (
-        <ul className="users-list">
+        <ul className="users">
           {data.users.map((user) => (
             <li key={user.id}>
               <Avatar userId={user.id} />

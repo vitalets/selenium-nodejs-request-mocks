@@ -34,7 +34,7 @@ it('non-empty list (server mocks)', async () => {
   );
 
   await driver.get('http://localhost:3000/ssr');
-  const users = await driver.wait(until.elementsLocated(By.css('.users-list li')), 3000);
+  const users = await driver.wait(until.elementsLocated(By.css('.users li')), 3000);
 
   assert.equal(users.length, 2);
   assert.match(await users[0].getText(), /User 1/);

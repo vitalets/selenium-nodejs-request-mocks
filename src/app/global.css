@@ -140,7 +140,7 @@ h1 {
   pointer-events: none;
 }
 
-.users-list {
+.users {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: 14px;
@@ -149,7 +149,7 @@ h1 {
   list-style: none;
 }
 
-.users-list li {
+.users li {
   min-height: 120px;
   display: grid;
   grid-template-columns: 72px 1fr;
@@ -168,7 +168,7 @@ h1 {
     transform 160ms ease;
 }
 
-.users-list li:hover {
+.users li:hover {
   border-color: rgba(15, 118, 110, 0.24);
   box-shadow: 0 16px 34px rgba(35, 49, 77, 0.11);
   transform: translateY(-2px);
@@ -180,13 +180,13 @@ h1 {
   gap: 6px;
 }
 
-.users-list img {
+.users img {
   border-radius: 50%;
   background: #f3f6f8;
   box-shadow: none;
 }
 
-.users-list span {
+.users span {
   min-width: 0;
   color: var(--ink);
   font-size: 1.1rem;
@@ -194,7 +194,7 @@ h1 {
   overflow-wrap: anywhere;
 }
 
-.users-list small {
+.users small {
   color: var(--muted);
   font-size: 0.9rem;
   font-weight: 700;
@@ -234,7 +234,7 @@ h1 {
     width: min(100%, 320px);
   }
 
-  .users-list {
+  .users {
     grid-template-columns: 1fr;
   }
 }
