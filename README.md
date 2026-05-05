@@ -1,6 +1,13 @@
-# Mocking Network Requests with Selenium WebDriver BiDi (Node.js)
+# SeleniumConf 2026: Mocking client-side and server-side API calls with Selenium BiDi
 
-## Usage
+## Links
+
+- [Slides](tbd)
+- [Request Mocking Protocol](https://github.com/vitalets/request-mocking-protocol)
+- [BiDi in Selenium](https://www.selenium.dev/documentation/webdriver/bidi/)
+- [BiDi support in major browsers](https://wpt.fyi/results/webdriver/tests/bidi)
+
+## Running the Demo
 
 1. Clone the repo:
 
@@ -20,26 +27,20 @@
    npm run dev
    ```
 
-4. Open new terminal and run tests without mocks:
-
-   ```
-   npm run test:nm
-   ```
-
-5. Run tests with client-side mocks:
+4. Open new terminal and run tests **without mocks**:
 
    ```
    npm run test
    ```
 
-6. Run tests with server-side mocks:
+5. Run tests with **client-side mocks**:
 
    ```
-   npm run test:ssr
+   npm run test:client-mocks
    ```
 
-7. Run all tests:
+6. Run tests with **server-side mocks**:
 
    ```
-   npm run test:all
+   npm run test:server-mocks
    ```
