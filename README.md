@@ -1,11 +1,13 @@
-# SeleniumConf 2026: Mocking client-side and server-side API calls with Selenium BiDi
+# SeleniumConf 2026: Mocking Client-Side and Server-Side API Calls with Selenium BiDi
+
+Source code for the demo app and tests.
 
 ## Links
 
-- [Slides](tbd)
-- [Request Mocking Protocol](https://github.com/vitalets/request-mocking-protocol)
-- [BiDi in Selenium](https://www.selenium.dev/documentation/webdriver/bidi/)
-- [BiDi support in major browsers](https://wpt.fyi/results/webdriver/tests/bidi)
+- View the [slides](tbd)
+- Connect on LinkedIn with [Vitaliy Potapov](https://www.linkedin.com/in/vitalets/)
+- Explore the JS implementation of [Request Mocking Protocol](https://github.com/vitalets/request-mocking-protocol)
+- Learn more about [BiDi in Selenium](https://www.selenium.dev/documentation/webdriver/bidi/)
 
 ## Running the Demo
 
