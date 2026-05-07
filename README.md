@@ -4,7 +4,7 @@ Source code for the demo app and tests.
 
 ## Links
 
-- View the [slides](tbd)
+- View the [slides](https://vitalets.github.io/seleniumconf-slides/)
 - Connect on LinkedIn with [Vitaliy Potapov](https://www.linkedin.com/in/vitalets/)
 - Explore the JS implementation of [Request Mocking Protocol](https://github.com/vitalets/request-mocking-protocol)
 - Learn more about [BiDi in Selenium](https://www.selenium.dev/documentation/webdriver/bidi/)
